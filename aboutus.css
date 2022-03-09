@@ -1,36 +1,4 @@
-
-
-.section-services .header-section .title:after {
-    content: "";
-    position: absolute;
-    bottom: -1px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 45px;
-    height: 3px;
-    background-color: var(--primary);
-}
-
-.section-services .header-section .title span {
-    color: var(--primary);
-}
-/* màu chữ dưới title */
-.section-services .header-section .description {
-    color: #3f3f3f;
-}
-/* 6 boxes */
-.section-services .single-service {
-    margin-top: 40px;
-    background-color: #acadb4;
-    /* shadow: att 1: độ ngang ( +: right, -: left), att2: độ dọc (+: bottom, -:top), att3: độ mờ, att4: độ lan, att5: màu */
-    box-shadow: 1px 1px 10px 5px rgba(116, 109, 109, 0.1);
-}
-
-.section-services .single-service .part-1 {
-    padding: 40px 40px 25px;
-    border-bottom: 2px solid #1d1e23;
-}
-
+//Hello
 .section-services .single-service .part-1 i {
     margin-bottom: 25px;
     font-size: 50px;
