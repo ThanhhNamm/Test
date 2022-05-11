@@ -75,8 +75,8 @@ if(isset($_POST['update_profile'])){
       </div>
    </div>
    <div class="button_profile">
-   <input type="submit" value="update profile" name="update_profile" class="btn">
-   <a href="profile_admin.php" class="delete-btn">go back</a>
+   <input type="submit" value="Đổi Mật Khẩu" name="update_profile" class="btn">
+   <a href="profile_admin.php" class="delete-btn">Trở về</a>
     </div>
 </form>
 

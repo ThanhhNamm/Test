@@ -22,7 +22,61 @@ $result=($page-1)*$post_per_page;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <title>Blog</title>
+    <title>Trang chủ - Từ Tâm Official</title>
+    <!-- Start Quick Buttons By share123bloggertemplates.com -->
+   <div class='quick-call-button'></div>
+   <div class='call-now-button'>
+    <div>
+    <p class='call-text'><a href='tel:0859016956' title='Liên Hệ Chúng Tôi' > Liên Hệ Chúng Tôi </a></p>
+     <a href='tel:0859016956' title='Liên Hệ Chúng Tôi' >
+     <div class='quick-alo-ph-circle'></div>
+                    <div class='quick-alo-ph-circle-fill'></div>
+                    <div class='quick-alo-ph-btn-icon quick-alo-phone-img-circle'></div>
+     </a>
+    </div>
+   </div>
+     <style>
+    @media screen and (max-width: 1920px) {
+    .call-now-button { display: flex !important; background: #d818db; }
+    .quick-call-button { display: block !important; }
+    }
+                @media screen and (min-width: px) {
+    .call-now-button .call-text { display: none !important; }
+    }
+    @media screen and (max-width: 1024px) {
+    .call-now-button .call-text { display: none !important; }
+    }
+    .call-now-button { top: 78%; }
+    .call-now-button { left: 86%; }
+    .call-now-button { background: #d818db; }
+    .quick-alo-ph-btn-icon { background-color: #ffffff !important; }
+    .call-now-button .call-text { color: #fff; }
+    .call-now-button div{
+      padding: 0px 25px 0px 6px;
+    }
+    .call-now-button div p{
+      margin: 8px 47px 8px 0px !important;
+    }
+    .quick-alo-ph-circle{
+      top: -25px !important;
+      left: unset !important;
+      right: -15px !important;
+    }
+    .quick-alo-ph-circle-fill{
+      top: -15px !important;
+      left: unset !important;
+      right: -6px !important;
+    }
+    .quick-alo-ph-btn-icon{
+      top: 0 !important;
+      left: unset !important;
+      right: 10px !important;
+    }
+   </style>
+   <!-- /End Quick Buttons By Share123bloggertemplates.com -->
+<link rel='stylesheet' id='lv_css-css'  href='https://cdn.jsdelivr.net/gh/hongblogger/2019@master/quick-call-button-hong.css' type='text/css' media='all' />
+<!--nut goi share123bloggertemplates.com-->
+
 </head>
 <body>
       <?php include_once('includes/navbar.php'); ?>
@@ -45,14 +99,14 @@ $result=($page-1)*$post_per_page;
 <a href="post.php?id=<?=$post['id']?>" style="text-decoration:none;color:black">
             <div class="row g-0">
               <div class="col-md-5" style="background-image: url('images/<?=getPostThumb($db,$post['id'])?>');background-size: cover">
-                <!-- <img src="https://images.moneycontrol.com/static-mcnews/2020/04/stock-in-the-news-770x433.jpg" alt="..."> -->
+               
               </div>
               <div class="col-md-7">
                 <div class="card-body">
                   <h5 class="card-title"><?=$post['title']?></h5>
-                  
-                  <p class="card-text text-truncate"><?=$post['content']?></p>
-                  <p class="card-text"><small class="text-muted">Posted on <?=date('F jS, Y',strtotime($post['created_at']))?></small></p>
+                 
+                  <p class="card-text text-truncate"><?echo substr($post['content'], 0, 2000);?></p>
+                  <p class="card-text"><small class="text-muted">Đăng vào lúc <?=date('F jS, Y',strtotime($post['created_at']))?></small></p>
                 </div>
               </div>
             </div>
@@ -64,6 +118,7 @@ $result=($page-1)*$post_per_page;
         
          
     </div>
+
     <?php include_once('includes/sidebar.php'); ?>
     
     </div>
@@ -74,7 +129,7 @@ $q="SELECT * FROM posts WHERE title LIKE '%$keyword%'";
 
 }else{
   $q="SELECT * FROM posts";
-
+  
 }
 $r=mysqli_query($db,$q);
 $total_posts=mysqli_num_rows($r);
@@ -96,7 +151,7 @@ if($page<$total_pages){
 }
         ?>
           <li class="page-item <?=$switch?>">
-            <a class="page-link" href="?<?php if(isset($_GET['search'])){echo "search=$keyword&";}?>page=<?=$page-1?>" tabindex="-1" aria-disabled="true">Previous</a>
+            <a class="page-link" href="?<?php if(isset($_GET['search'])){echo "search=$keyword&";}?>page=<?=$page-1?>" tabindex="-1" aria-disabled="true">Trước</a>
           </li>
           <?php
 for($opage=1;$opage<=$total_pages;$opage++){
@@ -108,7 +163,7 @@ for($opage=1;$opage<=$total_pages;$opage++){
           ?>
           
           <li class="page-item <?=$nswitch?>">
-            <a class="page-link" href="?<?php if(isset($_GET['search'])){echo "search=$keyword&";}?>page=<?=$page+1?>">Next</a>
+            <a class="page-link" href="?<?php if(isset($_GET['search'])){echo "search=$keyword&";}?>page=<?=$page+1?>">Tiếp</a>
           </li>
         </ul>
       </nav>

@@ -44,6 +44,7 @@ if(mysqli_num_rows($runQuery)){
   <!-- Custom styles -->
   <link href="css/style.css" rel="stylesheet">
   <link href="css/style-responsive.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
 
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
   <!--[if lt IE 9]>
@@ -57,6 +58,62 @@ if(mysqli_num_rows($runQuery)){
       Author: BootstrapMade
       Author URL: https://bootstrapmade.com
     ======================================================= -->
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Montserrat:600&display=swap');
+body{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  height: 150vh;
+  background: #fff;
+}
+input, button, select, textarea{
+  font-family: 'Courier New', Courier, monospace !important;
+}
+span{
+  position: relative;
+  display: inline-flex;
+  width: 200px;
+  height: 40px;
+  margin: 100px 150px;
+  perspective: 1000px;
+}
+span a{
+  font-size: 19px;
+  letter-spacing: 1px;
+  transform-style: preserve-3d;
+  transform: translateZ(-25px);
+  transition: transform .25s;
+  font-family: 'Montserrat', sans-serif;
+  
+}
+span a:before,
+span a:after{
+  position: absolute;
+  content: "Trở lại Website";
+  height: 55px;
+  width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid black;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+span a:before{
+  color: #fff;
+  background: #000;
+  transform: rotateY(0deg) translateZ(25px);
+}
+span a:after{
+  color: #000;
+  transform: rotateX(90deg) translateZ(25px);
+}
+span a:hover{
+  transform: translateZ(-25px) rotateX(-90deg);
+}
+
+    </style>
 </head>
 
 <body class="login-img3-body">
@@ -75,8 +132,8 @@ if(mysqli_num_rows($runQuery)){
           <input type="password" class="form-control" name="password" placeholder="Password" required>
         </div>
         
-        <button class="btn btn-primary btn-lg btn-block" name="login" type="submit">Login</button>
-        
+        <button class="btn btn-primary btn-lg btn-block" name="login" type="submit">Đăng Nhập</button>
+       
       </div>
     </form>
     <div class="text-right">
@@ -87,7 +144,7 @@ if(mysqli_num_rows($runQuery)){
             Licensing information: https://bootstrapmade.com/license/
             Purchase the pro version form: https://bootstrapmade.com/buy/?theme=NiceAdmin
           -->
-          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+          <span><a href="../index.php" style="font-size:large; font-weight:bold;"></a></span>
         </div>
     </div>
   </div>

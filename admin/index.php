@@ -17,7 +17,7 @@ $admin = getAdminInfo($db, $_SESSION['email']);
   <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
   <link rel="shortcut icon" href="img/favicon.png">
 
-  <title>MyBlog - Admin Panel</title>
+  <title>Từ Tâm - Trang Quản Trị</title>
 
   <!-- Bootstrap CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -46,13 +46,24 @@ $admin = getAdminInfo($db, $_SESSION['email']);
   <!-- custom css file link  -->
   <link rel="stylesheet" href="index.css">
 
-  
+
   <!-- =======================================================
     Theme Name: NiceAdmin
     Theme URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
     Author: BootstrapMade
     Author URL: https://bootstrapmade.com
   ======================================================= -->
+  <style>
+   body{
+     font-family: 'Courier New', Courier, monospace;
+   }
+   .modal-header h4.modal-title{
+    font-family: 'Courier New', Courier, monospace !important;
+   }
+   .panel-heading{
+     font-weight: bold;
+   }
+  </style>
 </head>
 
 <body>
@@ -85,8 +96,8 @@ $admin = getAdminInfo($db, $_SESSION['email']);
           <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
               <span class="profile-ava">
-            
-              <div class="profile">
+
+                <div class="profile">
                   <?php
                   $select = mysqli_query($db, "SELECT * FROM `profile`") or die('query failed');
                   if (mysqli_num_rows($select) > 0) {
@@ -99,17 +110,17 @@ $admin = getAdminInfo($db, $_SESSION['email']);
                   }
                   ?>
               </span>
-                
+
               <span class="name"><?= $admin['email'] ?></span>
               <b class="caret"></b>
             </a>
             <ul class="dropdown-menu extended logout">
               <div class="log-arrow-up"></div>
               <li class="eborder-top">
-                <a href="profile_admin.php"><i class="icon_profile"></i> My Account</a>
+                <a href="profile_admin.php"><i class="icon_profile"></i> Tài khoản của tôi</a>
               </li>
               <li>
-                <a href="../includes/logout.php"><i class="icon_key_alt"></i> Log Out</a>
+                <a href="../includes/logout.php"><i class="icon_key_alt"></i> Đăng xuất</a>
               </li>
 
             </ul>
@@ -128,37 +139,37 @@ $admin = getAdminInfo($db, $_SESSION['email']);
         <ul class="sidebar-menu">
           <li class="active">
             <a class="" href="index.php">
-              <i class="icon_house_alt"></i>
-              <span>Add Post</span>
+              <!-- <i class="icon_house_alt"></i> -->
+              <span>Thêm bài đăng</span>
             </a>
           </li>
           <li class="active">
             <a class="" href="index.php?managepost">
-              <i class="icon_house_alt"></i>
-              <span>Manage Post</span>
+              <!-- <i class="icon_house_alt"></i> -->
+              <span>Quản lí bài đăng</span>
             </a>
           </li>
           <li class="active">
             <a class="" href="index.php?managecomment">
-              <i class="icon_house_alt"></i>
-              <span>Manage Comments</span>
+              <!-- <i class="icon_house_alt"></i> -->
+              <span>Quản lí bình luận</span>
             </a>
           </li>
           <li class="active">
             <a class="" href="index.php?managecategory">
-              <i class="icon_house_alt"></i>
-              <span>Manage Category</span>
+              <!-- <i class="icon_house_alt"></i> -->
+              <span>Quản lí Danh mục</span>
             </a>
           </li>
           <li class="active">
             <a class="" href="index.php?managemenu">
-              <i class="icon_house_alt"></i>
-              <span>Manage Menu</span>
+              <!-- <i class="icon_house_alt"></i> -->
+              <span>Quản lí Menu</span>
             </a>
           </li>
           <li class="active">
             <a class="" href="../index.php">
-              <i class="icon_house_alt"></i>
+              <!-- <i class="icon_house_alt"></i> -->
               <span>Trở về Website</span>
             </a>
           </li>
@@ -187,17 +198,17 @@ $admin = getAdminInfo($db, $_SESSION['email']);
                 <div class="col-lg-12">
                   <section class="panel">
                     <header class="panel-heading">
-                      Posts
+                      Bài đăng
                     </header>
 
                     <table class="table table-striped table-advance table-hover">
                       <tbody>
                         <tr>
                           <th>#</th>
-                          <th>Post Title</th>
-                          <th>Post Category</th>
-                          <th>Post Date</th>
-                          <th>Action</th>
+                          <th>Tiêu đề bài đăng</th>
+                          <th>Danh mục bài đăng</th>
+                          <th>Thời gian đăng</th>
+                          <th>Hành động</th>
 
 
                         </tr>
@@ -218,7 +229,7 @@ $admin = getAdminInfo($db, $_SESSION['email']);
                             <td>
                               <div class="btn-group">
 
-                                <a class="btn btn-danger" href="../includes/removepost.php?id=<?= $post['id'] ?>">Remove <i class="icon_close_alt2"></i></a>
+                                <a class="btn btn-danger" href="../includes/removepost.php?id=<?= $post['id'] ?>">Xóa <i class="icon_close_alt2"></i></a>
                               </div>
                             </td>
                           </tr>
@@ -236,6 +247,69 @@ $admin = getAdminInfo($db, $_SESSION['email']);
                 </div>
               </div>
 
+
+              <!-- Phần quản lí comment -->
+
+
+            <?php
+            } else if (isset($_GET['managecomment'])) {
+            ?>
+              <div class="row">
+                <div class="col-lg-12">
+                  <section class="panel">
+                    <header class="panel-heading">
+                      Quản lí bình luận
+                    </header>
+
+                    <table class="table table-striped table-advance table-hover">
+                      <tbody>
+                        <tr>
+                          <th>#</th>
+                          <th>Nội dung bình luận</th>
+                          <th>Tác giả</th>
+                          <th>Thời gian đăng</th>
+                          <th>Hành động</th>
+
+
+                        </tr>
+
+                        <?php
+                        $posts = getCommentPost($db);
+                        $count = 1;
+                        foreach ($posts as $post) {
+                        ?>
+                          <tr>
+                            <td><?= $count ?></td>
+                            <td><?= $post['comment'] ?></td>
+                            <td><?= $post['name'] ?></td>
+
+
+                            <td><?= date('F jS, Y', strtotime($post['created_at'])) ?></td>
+
+
+                            <td>
+                              <div class="btn-group">
+
+                                <a class="btn btn-danger" href="../includes/removepost.php?id=<?= $post['id'] ?>">Xóa <i class="icon_close_alt2"></i></a>
+                              </div>
+                            </td>
+                          </tr>
+                        <?php
+                          $count++;
+                        }
+                        ?>
+
+
+
+
+                      </tbody>
+                    </table>
+                  </section>
+                </div>
+              </div>
+
+
+
             <?php
             } else if (isset($_GET['managemenu'])) {
             ?>
@@ -244,22 +318,22 @@ $admin = getAdminInfo($db, $_SESSION['email']);
                   <div class="modal-content">
                     <div class="modal-header">
                       <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                      <h4 class="modal-title">Add New Menu</h4>
+                      <h4 class="modal-title">Thêm Menu mới</h4>
                     </div>
                     <div class="modal-body">
 
                       <form role="form" method="post" action="../includes/addmenu.php">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Menu Title</label>
+                          <label for="exampleInputEmail1">Tiêu đề Menu</label>
                           <input type="text" name="menu-name" class="form-control" id="exampleInputEmail3" placeholder="Enter menu name..">
                         </div>
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Menu Link</label>
+                          <label for="exampleInputEmail1">Đường dẫn Menu</label>
                           <input type="text" name="menu-link" class="form-control" id="exampleInputEmail3" value="#" placeholder="Enter menu link..">
                         </div>
 
 
-                        <button type="submit" name="addmenu" class="btn btn-primary">Add</button>
+                        <button type="submit" name="addmenu" class="btn btn-primary">Thêm</button>
                       </form>
                     </div>
                   </div>
@@ -270,7 +344,7 @@ $admin = getAdminInfo($db, $_SESSION['email']);
                   <section class="panel">
                     <header class="panel-heading">
                       Menu - <a href="#myModal" data-toggle="modal" class="text-primary">
-                        Add New Menu</a>
+                        Thêm mới Menu</a>
                     </header>
 
                     <table class="table table-striped table-advance table-hover">
@@ -278,8 +352,8 @@ $admin = getAdminInfo($db, $_SESSION['email']);
                         <tr>
                           <th>#</th>
                           <th>Menu</th>
-                          <th>Link</th>
-                          <th>Action</th>
+                          <th>Đường link</th>
+                          <th>Hành động</th>
 
 
                         </tr>
@@ -298,7 +372,7 @@ $admin = getAdminInfo($db, $_SESSION['email']);
                             <td>
                               <div class="btn-group">
 
-                                <a class="btn btn-danger" href="../includes/removemenu.php?id=<?= $menu['id'] ?>">Remove <i class="icon_close_alt2"></i></a>
+                                <a class="btn btn-danger" href="../includes/removemenu.php?id=<?= $menu['id'] ?>">Xóa <i class="icon_close_alt2"></i></a>
                               </div>
                             </td>
                           </tr>
@@ -327,17 +401,17 @@ $admin = getAdminInfo($db, $_SESSION['email']);
                   <div class="modal-content">
                     <div class="modal-header">
                       <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                      <h4 class="modal-title">Add New SubMenu</h4>
+                      <h4 class="modal-title">Thêm mới menu con</h4>
                     </div>
                     <div class="modal-body">
 
                       <form role="form" method="post" action="../includes/addmenu.php">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">SubMenu Title</label>
+                          <label for="exampleInputEmail1"> Tiêu đề menu con</label>
                           <input type="text" name="submenu-name" class="form-control" id="exampleInputEmail3" placeholder="Enter menu name..">
                         </div>
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Select Parent Menu</label>
+                          <label for="exampleInputEmail1">Chọn menu chứa menu con</label>
                           <select name="parent-id" class="form-control" id="exampleInputEmail3">
                             <?php
                             $mlist = getAllMenu($db);
@@ -352,12 +426,12 @@ $admin = getAdminInfo($db, $_SESSION['email']);
                           </select>
                         </div>
                         <div class="form-group">
-                          <label for="exampleInputEmail1">SubMenu Link</label>
+                          <label for="exampleInputEmail1">Đường dẫn menu con</label>
                           <input type="text" name="submenu-link" class="form-control" id="exampleInputEmail3" value="#" placeholder="Enter menu link..">
                         </div>
 
 
-                        <button type="submit" name="addsubmenu" class="btn btn-primary">Add</button>
+                        <button type="submit" name="addsubmenu" class="btn btn-primary">Thêm</button>
                       </form>
                     </div>
                   </div>
@@ -368,17 +442,17 @@ $admin = getAdminInfo($db, $_SESSION['email']);
                   <section class="panel">
                     <header class="panel-heading">
                       SubMenu - <a href="#myModal1" data-toggle="modal" class="text-primary">
-                        Add New SubMenu</a>
+                        Thêm mới menu con</a>
                     </header>
 
                     <table class="table table-striped table-advance table-hover">
                       <tbody>
                         <tr>
                           <th>#</th>
-                          <th>Sub Menu</th>
-                          <th>Parent Menu</th>
-                          <th>Link</th>
-                          <th>Action</th>
+                          <th>Menu con</th>
+                          <th>Menu chứa menu con</th>
+                          <th>Đường link</th>
+                          <th>Hành động</th>
 
 
                         </tr>
@@ -399,7 +473,7 @@ $admin = getAdminInfo($db, $_SESSION['email']);
                             <td>
                               <div class="btn-group">
 
-                                <a class="btn btn-danger" href="../includes/removesubmenu.php?id=<?= $menu['id'] ?>">Remove <i class="icon_close_alt2"></i></a>
+                                <a class="btn btn-danger" href="../includes/removesubmenu.php?id=<?= $menu['id'] ?>">Xóa <i class="icon_close_alt2"></i></a>
                               </div>
                             </td>
                           </tr>
@@ -426,19 +500,19 @@ $admin = getAdminInfo($db, $_SESSION['email']);
                   <div class="modal-content">
                     <div class="modal-header">
                       <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                      <h4 class="modal-title">Add New Category</h4>
+                      <h4 class="modal-title">Thêm mới danh mục</h4>
                     </div>
                     <div class="modal-body">
 
                       <form role="form" method="post" action="../includes/addct.php">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Category Name</label>
-                          <input type="text" name="category-name" class="form-control" id="exampleInputEmail3" placeholder="Enter category name..">
+                          <label for="exampleInputEmail1">Tên Danh mục</label>
+                          <input type="text" name="category-name" class="form-control" id="exampleInputEmail3" placeholder="Nhập tên danh mục..">
                         </div>
 
 
 
-                        <button type="submit" name="addct" class="btn btn-primary">Add</button>
+                        <button type="submit" name="addct" class="btn btn-primary">Thêm</button>
                       </form>
                     </div>
                   </div>
@@ -449,7 +523,7 @@ $admin = getAdminInfo($db, $_SESSION['email']);
                   <section class="panel">
                     <header class="panel-heading">
                       Category - <a href="#myModal" data-toggle="modal" class="text-primary">
-                        Add New Category
+                        Thêm mới danh mục
                       </a>
                     </header>
 
@@ -457,8 +531,8 @@ $admin = getAdminInfo($db, $_SESSION['email']);
                       <tbody>
                         <tr>
                           <th>#</th>
-                          <th>Category Name</th>
-                          <th>Action</th>
+                          <th>Tên Danh mục</th>
+                          <th>Hành động</th>
 
                         </tr>
 
@@ -474,7 +548,7 @@ $admin = getAdminInfo($db, $_SESSION['email']);
                             <td>
                               <div class="btn-group">
 
-                                <a class="btn btn-danger" href="../includes/removect.php?id=<?= $ct['id'] ?>">Remove <i class="icon_close_alt2"></i></a>
+                                <a class="btn btn-danger" href="../includes/removect.php?id=<?= $ct['id'] ?>">Xóa <i class="icon_close_alt2"></i></a>
                               </div>
                             </td>
                           </tr>
@@ -497,21 +571,21 @@ $admin = getAdminInfo($db, $_SESSION['email']);
               <div class="col-lg-12">
                 <section class="panel">
                   <header class="panel-heading">
-                    Add Post
+                    Thêm bài đăng
                   </header>
                   <div class="panel-body">
                     <div class="form">
                       <form action="../includes/addpost.php" method="post" enctype="multipart/form-data" class="form-horizontal">
                         <div class="form-group">
                           <div class="col-sm-12">
-                            <label>Post Title</label>
+                            <label style="font-weight:bold">Tiêu đề bài đăng</label>
                             <input type="text" class="form-control" name="post_title">
                           </div>
                         </div>
                         <div class="form-group">
 
                           <div class="col-sm-12">
-                            <label>Post Content</label>
+                            <label style="font-weight:bold">Nội dung bài đăng</label>
                             <textarea class="form-control ckeditor" name="post_content" rows="6"></textarea>
                           </div>
                         </div>
@@ -519,7 +593,7 @@ $admin = getAdminInfo($db, $_SESSION['email']);
                         <div class="row">
                           <div class="form-group col-sm-6">
                             <div class="col-sm-12">
-                              <label>Select Post Category</label>
+                              <label style="font-weight:bold">Chọn danh mục cho bài đăng</label>
 
                               <select name="post_category" class="form-control">
                                 <?php
@@ -536,13 +610,13 @@ $admin = getAdminInfo($db, $_SESSION['email']);
                           </div>
                           <div class="form-group col-sm-6">
                             <div class="col-sm-12">
-                              <label>Upload Photos(max 5)</label>
+                              <label style="font-weight:bold">Tải ảnh lên (tối đa 5 ảnh)</label>
 
                               <input type="file" class="form-control" name="post_image[]" accept="image/*" multiple />
                             </div>
                           </div>
                         </div>
-                        <input type="submit" name="addpost" class="btn btn-primary" value="Add Post">
+                        <input type="submit" name="addpost" class="btn btn-primary" value=" Thêm Bài ">
                       </form>
                     </div>
                   </div>

@@ -16,25 +16,7 @@ if(isset($_POST['update_profile'])){
 
    mysqli_query($db, "UPDATE `profile` SET email = '$update_email' " )  or die('query failed');
    $message[] = 'email updated succssfully!';
-
-   $old_pass = $_POST['old_pass'];
-   $update_pass = mysqli_real_escape_string($db, ($_POST['update_pass']));
-   $new_pass = mysqli_real_escape_string($db, ($_POST['new_pass']));
-   $confirm_pass = mysqli_real_escape_string($db, ($_POST['confirm_pass']));
-
-   if(!empty($update_pass) || !empty($new_pass) || !empty($confirm_pass)){
-      if($update_pass != $old_pass){
-         $message[] = 'old password not matched!';
-      }elseif($new_pass != $confirm_pass){
-         $message[] = 'confirm password not matched!';
-      }else{
-         mysqli_query($db, "UPDATE `profile` SET password = '$confirm_pass' ") or die('query failed');
-         $message[] = 'password updated successfully!';
-      }
-
    
-   }
-
    $update_image = $_FILES['update_image']['name'];
    $update_image_size = $_FILES['update_image']['size'];
    $update_image_tmp_name = $_FILES['update_image']['tmp_name'];

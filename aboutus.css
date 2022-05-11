@@ -1,5 +1,6 @@
 :root {
     --primary: #f70037;
+    --grey: grey;
   }
 
 a,p,h1,h2,h3,h4,ul {
@@ -7,11 +8,14 @@ a,p,h1,h2,h3,h4,ul {
     padding: 0;
 }
 /* All Content & half title & all title in 6 boxes*/
+.title{
+    font-family: 'Times New Roman', Times, serif;
+}
 .section-services {
     padding-top: 110px;
     padding-bottom: 120px;
     font-family: "Poppins", sans-serif;
-    background-color: #e5f7ff;
+    background-color: #ffffff;
     color: rgb(0, 0, 0);
 }
 
@@ -35,7 +39,7 @@ a,p,h1,h2,h3,h4,ul {
     transform: translateX(-50%);
     width: 140px;
     height: 1px;
-    background-color: var(--primary);
+    background-color: var(--grey);
 }
 
 .section-services .header-section .title:after {
@@ -46,7 +50,7 @@ a,p,h1,h2,h3,h4,ul {
     transform: translateX(-50%);
     width: 45px;
     height: 3px;
-    background-color: var(--primary);
+    background-color: var(--grey);
 }
 
 .section-services .header-section .title span {
@@ -54,6 +58,7 @@ a,p,h1,h2,h3,h4,ul {
 }
 /* màu chữ dưới title */
 .section-services .header-section .description {
+    font-family: arial;
     color: #3f3f3f;
 }
 /* 6 boxes */

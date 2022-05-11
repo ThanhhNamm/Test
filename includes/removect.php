@@ -6,5 +6,4 @@ if(isset($_GET['id'])){
     mysqli_query($db,$query);
 header('location:../admin/index.php?managecategory');
 }
-
 ?>
